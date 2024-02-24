@@ -1,0 +1,1 @@
+export const SolideURL = "https://solidewidget.azurewebsites.net";
