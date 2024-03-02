@@ -46,11 +46,11 @@ The **EntryPoint** (EP) contract on Ethereum, found at [0x5FF137D4b0FDCD49DcA30c
 
 You can explore this contract using Solidity's IDE `${SOLIDE_URL}/1/0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789)`
 
-As of writing this, it's contract version is `0.6.0` and serves as the main hub for processing batches of `UserOperations`. The contract offers two main methods: `handleOps` and `handleAggregatedOps`. We'll focus on `handleOps` for now, leaving `handleAggregatedOps` for later discussion.
+As of writing this, its contract version is `0.6.0` and serves as the main hub for processing batches of `UserOperations`. The contract offers two main methods: `handleOps` and `handleAggregatedOps`. We'll focus on `handleOps` for now, leaving `handleAggregatedOps` for later discussion.
 
-## 👉 handleOps
+## :point_right: handleOps
 
-The main flow of a using the EntryPoint typically comes from the `Bundler` contracts which calls, the `handleOps()`
+The main flow of using the EntryPoint typically comes from the `Bundler` contracts which are called the `handleOps()`
 
 ```solidity
 function handleOps(UserOperation[] calldata ops, address payable beneficiary) public nonReentrant
@@ -79,7 +79,7 @@ In order to populate the opInfos from the Bundler, the function will undergo val
 
 Go to implementation information for [_validatePrepayment](#%EF%B8%8F-_validateprepayment)
 
-After the validation of both the Account and Paymaster, the validation is check if see if they expire in `_validateAccountAndPaymasterValidationData`. If the validation is successful, the EntryPoint will execute the UserOperations. 
+After the validation of both the Account and Paymaster, the validation is checked to see if they expire in `_validateAccountAndPaymasterValidationData`. If the validation is successful, the EntryPoint will execute the UserOperations. 
 
 Go to implementation information for [_validateAccountAndPaymasterValidationData](#%EF%B8%8F-validateaccountandpaymastervalidationdata)
 
@@ -94,7 +94,7 @@ for (uint256 i = 0; i < opslen; i++) {
 _compensate(beneficiary, collected);
 ```
 
-With all validation complete it'll emits an event before execution begins. Then start iterating through each user operation, executing them and adding the gas fees consumed by each operation to the total collected amount. After all operations are executed, it compensates the specified beneficiary with the total collected gas fees, transferring them to the beneficiary's address.
+With all validation complete it'll emit an event before execution begins. Then start iterating through each user operation, executing them and adding the gas fees consumed by each operation to the total collected amount. After all operations are executed, it compensates the specified beneficiary with the total collected gas fees, transferring them to the beneficiary's address.
 
 Go to implementation information for [_executeUserOp](#%EF%B8%8F-_executeuserop)
 
@@ -121,7 +121,7 @@ _copyUserOpToMemory(userOp, mUserOp);
 outOpInfo.userOpHash = getUserOpHash(userOp);
 ```
 
-Initially, the function tracks the remaining gas at the start of its execution. Utilizing the built-in Solidity function `gasleft()`, it determines the amount of gas remaining within the current Ethereum transaction. *Throughout the call to the EntryPoint, `gasleft` is employed to inform decisions based on the gas supplied by the Bundler.* Subsequently, it creates a copy the data from `userOp` into memory for efficient processing. Following this, it calculates a hash of the UserOperation data using the `getUserOpHash` function. This hash functions as a unique identifier for the operation, facilitating validation processes.
+Initially, the function tracks the remaining gas at the start of its execution. Utilizing the built-in Solidity function `gasleft()`, it determines the amount of gas remaining within the current Ethereum transaction. *Throughout the call to the EntryPoint, `gasleft` is employed to inform decisions based on the gas supplied by the Bundler.* Subsequently, it creates a copy of the data from `userOp` into memory for efficient processing. Following this, it calculates a hash of the UserOperation data using the `getUserOpHash` function. This hash functions as a unique identifier for the operation, facilitating validation processes.
 
 ```solidity
 require(maxGasValues <= type(uint120).max, "AA94 gas values overflow");
@@ -135,7 +135,7 @@ uint256 gasUsedByValidateAccountPrepayment;
 (gasUsedByValidateAccountPrepayment, validationData) = _validateAccountPrepayment(opIndex, userOp, outOpInfo, requiredPreFund);
 ```
 
-The function continues by calculating the gas needed to pre-fund the operation. This calculation is based on the UserOperation data and specific conditions defined within the `_getRequiredPrefund` function. Furthermore, the function conducts validation checks using `_validateAccountPrepayment`. These checks ensure that the account *(Smart Contract Wallet)* , possesses adequate funds and allowances to cover the operation's gas costs.
+The function continues by calculating the gas needed to pre-fund the operation. This calculation is based on the UserOperation data and specific conditions defined within the `_getRequiredPrefund` function. Furthermore, the function conducts validation checks using `_validateAccountPrepayment`. These checks ensure that the account *(Smart Contract Wallet)*, possesses adequate funds and allowances to cover the operation's gas costs.
 
 Go to implementation information for [_validateAccountPrepayment](#_validateaccountprepayment)
 
@@ -145,7 +145,7 @@ if (mUserOp.paymaster != address(0)) {
 }
 ```
 
-This next stage is optional, contingent upon the bundler's inclusion of a paymaster for the UserOperation. *A paymaster, integral component in Account Abstraction as it enables users to settle transaction feees such as utilizing ERC-20 tokens rather than native tokens like ETH. Acting as an intermediary, the Paymaster gathers ERC-20 tokens from users and remits ETH to the blockchain for transaction facilitation.* Therefore, this aspect is a crucial addition to the EntryPoint, permitting the Bundler to cover the UserOperation costs using ERC-20 tokens instead of native tokens such as ETH.
+This next stage is optional, contingent upon the bundler's inclusion of a paymaster for the UserOperation. *The paymaster is an integral component in Account Abstraction as it enables users to settle transaction fees such as utilizing ERC-20 tokens rather than native tokens like ETH. Acting as an intermediary, the Paymaster gathers ERC-20 tokens from users and remits ETH to the blockchain for transaction facilitation.* Therefore, this aspect is a crucial addition to the EntryPoint, permitting the Bundler to cover the UserOperation costs using ERC-20 tokens instead of native tokens such as ETH.
 
 Go to implementation information for [_validatePaymasterPrepayment](#_validatepaymasterprepayment)
 
@@ -166,9 +166,9 @@ After completing the necessary gas calculations and validations, the function en
 - `outOpInfo.contextOffset` is designated as the offset of the context object in memory. Note that the context object is returned by the `Paymaster.validatePaymasterUserOp` call. By storing only the memory offset of the context object, we alleviate the need to pass around the entire context object while invoking internal methods.
 - `outOpInfo.preOpGas` is determined as the sum of the total gas used thus far and the `userOp.preVerificationGas`.
 
-In summary, `_validatePrepayment` assumes a role of guaranteeing the validity and safety of UserOperations within the account abstraction framework. It encompasses crucial tasks such as gas tracking, hashing, validation, and pre-funding calculations, ensuring the seamless and secure execution of operations.
+In summary, `_validatePrepayment` assumes the role of guaranteeing the validity and safety of UserOperations within the account abstraction framework. It encompasses crucial tasks such as gas tracking, hashing, validation, and pre-funding calculations, ensuring the seamless and secure execution of operations.
 
-Go back to [handleOps](#-handleops)
+Go back to [handleOps](#point_right-handleops)
 
 ### _validateAccountPrepayment
 
@@ -181,13 +181,13 @@ This internal method is crucial for validating the operation with a Smart Contra
 Once the Smart Contract Wallet is deemed valid for further validation, the method proceeds to perform calculations on the gas funds and validate the `validateUserOp` function on the SCW if and only if `paymaster == address(0)`. This condition signifies that the SCW, either passed or generated, will be responsible for covering the current UserOperation execution(s).
 
 **Important stage in handleOps**
-As this point, the EntryPoint call stack should `handleOps.validatePrePayment._validateAccountPrepayment`, where the EntryPoint is validating that the SCW has enough gas to cover the UserOperation.
+At this point, the EntryPoint call stack should `handleOps.validatePrePayment._validateAccountPrepayment`, where the EntryPoint is validating that the SCW has enough gas to cover the UserOperation.
 
 ```solidity
 try IAccount(sender).validateUserOp{gas : mUserOp.verificationGasLimit}(op, opInfo.userOpHash, missingAccountFunds)
 ```
 
-*There is also the introducation reverting the entire transaction if validations fails from the SCW or the call runs out of gas.  Mainly the `FailedOp` will revert the transaction.*
+*There is also the introduction of reverting the entire transaction if validations fail from the SCW or the call runs out of gas.  Mainly the `FailedOp` will revert the transaction.*
 
 Upon successful validation, both `gasUsedByValidateAccountPrepayment` and `validationData` provided by the SCW through its `IAccount` interface are captured. It is crucial that the validation logic is tailored and executed according to each user's preferences and requirements.
 
@@ -206,7 +206,7 @@ if (deposit < requiredPreFund) {
     revert FailedOp(opIndex, "AA31 paymaster deposit too low");
 }
 ```
-Similarly to the `_validateAccountPrepayment`, this time, it'll check the paymaster's deposit balance in EP. If there is enough despot compared to the provided , it'll deduct the that the the requiredPreFund from the Paymaster's deposit,
+Similarly to the `_validateAccountPrepayment`, this time, it'll check the paymaster's deposit balance in EP. If there is enough despot compared to the provided, it'll deduct the that the the requiredPreFund from the Paymaster's deposit,
 
 ```solidity
 MemoryUserOp memory mUserOp = opInfo.mUserOp;
@@ -215,13 +215,13 @@ require(verificationGasLimit > gasUsedByValidateAccountPrepayment, "AA41 too lit
 uint256 gas = verificationGasLimit - gasUsedByValidateAccountPrepayment;
 ```
 
-`gasUsedByValidateAccountPrepayment` calculated by the Account validation, is used to calculate the gas required to pay back the bundler. This is done via `_getRequiredPrefund`. Since the EntryPoint is executing the UserOperations, this means that EntryPoint must ensure it has enough gas to execute those UserOperations and in order for the Bundler to obtain the gas, depends on whether a Paymaster is setup or the Smart Contract Wallet provided. 
+`gasUsedByValidateAccountPrepayment` calculated by the Account validation, is used to calculate the gas required to pay back the bundler. This is done via `_getRequiredPrefund`. Since the EntryPoint is executing the UserOperations, this means that EntryPoint must ensure it has enough gas to execute those UserOperations and in order for the Bundler to obtain the gas, depends on whether a Paymaster is set up or the Smart Contract Wallet provided. 
 
 ```solidity
 paymasterInfo.deposit = deposit - requiredPreFund
 ```
 
-After deducting the deposit as mention call the validationOp's `validatePaymasterUserOp` for paymaster of `interfaces/IPaymaster.sol` and with the  `userOp.verificationGasLimit` as gas limit and return the validation Data.
+After deducting the deposit as mentioned call the validationOp's `validatePaymasterUserOp` for paymaster of `interfaces/IPaymaster.sol` and with the  `userOp.verificationGasLimit` as gas limit and return the validation Data.
 
 ```solidity
 IPaymaster(paymaster).validatePaymasterUserOp{gas: gas}(op, opInfo.userOpHash, requiredPreFund) returns (bytes memory _context, uint256 _validationData) 
@@ -270,7 +270,7 @@ if (outOfTimeRange) {
 }
 ```
 
-Hence if we go back to the EntryPoint where it'll parse the above `validationResult` as `paymasterValidationData` we see it extractsthe `pmAggregator` variable represents the aggregator status obtained from the paymasterValidationData. A value of `0` indicates a successful aggregator, while `1` implies an expired aggregator. With this, if `pmAggregator` is assigned the value of `address(0)`, it signifies that the aggregator is successful as it has the value of `0`.
+Hence if we go back to the EntryPoint where it'll parse the above `validationResult` as `paymasterValidationData` we see it extracts the `pmAggregator` variable represents the aggregator status obtained from the paymasterValidationData. A value of `0` indicates a successful aggregator, while `1` implies an expired aggregator. With this, if `pmAggregator` is assigned the value of `address(0)`, it signifies that the aggregator is successful as it has the value of `0`.
 
 Furthermore, validation is conducted by comparing the current block timestamp with the validUntil and validAfter timestamps obtained from the validation data. The `outOfTimeRange` variable is set based on whether the current timestamp exceeds the validUntil timestamp or falls before the validAfter timestamp. If `outOfTimeRange` is `true`, it indicates that the paymaster has expired or the operation is not yet due.
 
@@ -280,7 +280,7 @@ outOfTimeRange = block.timestamp > data.validUntil || block.timestamp < data.val
 
 In summary, the code snippet checks the status of the aggregator and verifies the validity of the paymaster based on timestamps, ensuring that the operation is executed within the designated time range. If any discrepancy is detected, the function reverts the transaction with an appropriate error message, such as "signature error" or "paymaster expired or not due."
 
-Go back to [handleOps](#-handleops)
+Go back to [handleOps](#point_right-handleops)
 
 ### numberMarker()
 
