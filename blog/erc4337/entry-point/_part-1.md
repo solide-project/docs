@@ -77,11 +77,11 @@ for (uint256 i = 0; i < opslen; i++) {
 
 In order to populate the opInfos from the Bundler, the function will undergo validation check in its loops. In order to save gas it'll be in the `uncheck` 
 
-Go to implementation information for [_validatePrepayment](#%EF%B8%8F-_validateprepayment)
+Go to implementation information for [_validatePrepayment](#heavy_check_mark-_validateprepayment)
 
 After the validation of both the Account and Paymaster, the validation is checked to see if they expire in `_validateAccountAndPaymasterValidationData`. If the validation is successful, the EntryPoint will execute the UserOperations. 
 
-Go to implementation information for [_validateAccountAndPaymasterValidationData](#%EF%B8%8F-validateaccountandpaymastervalidationdata)
+Go to implementation information for [_validateAccountAndPaymasterValidationData](#heavy_check_mark-validateaccountandpaymastervalidationdata)
 
 ```solidity
 uint256 collected = 0;
@@ -96,11 +96,11 @@ _compensate(beneficiary, collected);
 
 With all validation complete it'll emit an event before execution begins. Then start iterating through each user operation, executing them and adding the gas fees consumed by each operation to the total collected amount. After all operations are executed, it compensates the specified beneficiary with the total collected gas fees, transferring them to the beneficiary's address.
 
-Go to implementation information for [_executeUserOp](#%EF%B8%8F-_executeuserop)
+Go to implementation information for [_executeUserOp](#wrench-_executeuserop)
 
-Go to implementation information for [_compensate](#-_compensate)
+Go to implementation information for [_compensate](#dollar-_compensate)
 
-## ✔️ _validatePrepayment
+## :heavy_check_mark: _validatePrepayment
 
 ```solidity
 function _validatePrepayment(uint256 opIndex, UserOperation calldata userOp, UserOpInfo memory outOpInfo)
@@ -191,7 +191,7 @@ try IAccount(sender).validateUserOp{gas : mUserOp.verificationGasLimit}(op, opIn
 
 Upon successful validation, both `gasUsedByValidateAccountPrepayment` and `validationData` provided by the SCW through its `IAccount` interface are captured. It is crucial that the validation logic is tailored and executed according to each user's preferences and requirements.
 
-Go back to [_validatePrepayment](#%EF%B8%8F-_validateprepayment)
+Go back to [_validatePrepayment](#heavy_check_mark-_validateprepayment)
 
 ### _validatePaymasterPrepayment
 
@@ -229,9 +229,9 @@ IPaymaster(paymaster).validatePaymasterUserOp{gas: gas}(op, opInfo.userOpHash, r
 
 This will return *context object* and `validationData`.
 
-Go back to [_validatePrepayment](#%EF%B8%8F-_validateprepayment)
+Go back to [_validatePrepayment](#heavy_check_mark-_validateprepayment)
 
-## ✔️ validateAccountAndPaymasterValidationData
+## :heavy_check_mark: validateAccountAndPaymasterValidationData
 
 ```solidity
 function _validateAccountAndPaymasterValidationData(uint256 opIndex, uint256 validationData, uint256 paymasterValidationData,
