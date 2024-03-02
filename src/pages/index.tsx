@@ -4,6 +4,7 @@ import Layout from '@theme/Layout';
 import { useColorMode } from '@docusaurus/theme-common';
 
 import { Icon } from '@iconify/react'
+import { useEffect, useState } from 'react';
 
 const homepageConfig = {
   pill: '🤗 Welcome to Solide Docs!',
@@ -40,6 +41,16 @@ const homepageConfig = {
 
 function HomepageHeader() {
   const { isDarkTheme } = useColorMode();
+  const [isDark, setIsDark] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isDarkTheme) {
+      setIsDark(true);
+    } else {
+      setIsDark(false)
+    }
+  }, [isDarkTheme]);
+
   return (
     <section className="space-y-6 py-4 md:py-8 lg:py-16">
       <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
@@ -62,7 +73,7 @@ function HomepageHeader() {
                 <Icon icon={feature.icon} className='text-4xl md:text-7xl' color='#7c3aed' />
               </div>
               <div className='flex items-center justify-center'>
-                <Link className={`text-normal md:text-3xl ${isDarkTheme ? 'text-white' : 'text-black'}`}
+                <Link className={`text-normal md:text-3xl ${isDark ? 'text-white' : 'text-black'}`}
                   to={feature.link.href || "#"} target={feature.link.local ? "_self" : "_blank"}>
                   <div className='font-extrabold mx-2'>{feature.title}
                     <Icon inline={true} icon={feature.link.local ? "lucide:arrow-right" : "lucide:external-link"} />

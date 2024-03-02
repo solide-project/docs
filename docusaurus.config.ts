@@ -8,11 +8,8 @@ const config: Config = {
   tagline: 'Solide',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
-  url: 'https://solide-dapp.vercel.app/',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  url: 'https://solide-project.github.io',
+  baseUrl: '/doc/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -35,6 +32,8 @@ const config: Config = {
         },
         blog: {
           showReadingTime: true,
+          readingTime: ({ content, frontMatter, defaultReadingTime }) =>
+            defaultReadingTime({ content, options: { wordsPerMinute: 300 } }),
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -97,6 +96,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.duotoneLight,
       darkTheme: prismThemes.vsDark,
+      additionalLanguages: ['solidity'],
     },
   } satisfies Preset.ThemeConfig,
 
