@@ -8,8 +8,8 @@ const config: Config = {
   tagline: 'Solide',
   favicon: 'img/favicon.ico',
 
-  url: 'https://solide-project.github.io',
-  baseUrl: '/doc/',
+  url: 'http://docs.solide0x.tech',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

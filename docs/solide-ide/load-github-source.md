@@ -3,6 +3,7 @@ sidebar_position: 1
 ---
 
 import SolideIDE from '@site/src/components/SolideIDE'
+import { SolideURL } from '@site/src/lib/constants'
 
 # EVM - Load Smart Contract from GitHub
 
@@ -29,10 +30,10 @@ The following example is loading the (`MintableERC20.sol`) contract from our Sol
 
 ```html title="MintableERC20.sol" showLineNumbers
 <iframe 
-  src="https://solidewidget.azurewebsites.net?url=https://github.com/solide-project/solide-guides/blob/master/src/openzeppelin/MintableERC20/MintableERC20.sol"
+  src="{SolideURL}?url=https://github.com/solide-project/solide-guides/blob/master/src/openzeppelin/MintableERC20/MintableERC20.sol"
   height="400" width="300"></iframe>
 ```
 
 <SolideIDE 
-  url="https://solidewidget.azurewebsites.net?url=https://github.com/solide-project/solide-guides/blob/master/src/openzeppelin/MintableERC20/MintableERC20.sol">
+  url={`${SolideURL}?url=https://github.com/solide-project/solide-guides/blob/master/src/openzeppelin/MintableERC20/MintableERC20.sol`}>
 </SolideIDE>

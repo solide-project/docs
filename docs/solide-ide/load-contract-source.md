@@ -3,6 +3,7 @@ sidebar_position: 1
 ---
 
 import SolideIDE from '@site/src/components/SolideIDE'
+import { SolideURL } from '@site/src/lib/constants'
 
 # EVM - Load Smart Contract from Address
 
@@ -20,8 +21,8 @@ The following example demonstrates how to load a verified Wrapped Ether (`MaticW
 
 ```html title="MaticWETH.sol" showLineNumbers
 <iframe 
-  src="https://solidewidget.azurewebsites.net/address/137/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+  src="{SolideURL}/address/137/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
   height="400" width="300"></iframe>
 ```
 
-<SolideIDE url="https://solidewidget.azurewebsites.net/address/137/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"></SolideIDE>
+<SolideIDE url={`${SolideURL}/address/137/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619`}></SolideIDE>
