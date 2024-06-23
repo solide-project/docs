@@ -9,11 +9,13 @@ export const getAPIKey = (network: string): string => {
       return process.env.ETHERSCAN_API_KEY || ""
     case ChainID.ARBITRUM_ONE:
     case ChainID.ARBITRUM_GOERLI:
+    case ChainID.ARBITRUM_SEPOLIA:
       return process.env.ARBISCAN_API_KEY || ""
     case ChainID.ARBITRUM_NOVA:
       return process.env.NOVAARBISCAN_API_KEY || ""
     case ChainID.POLYGON_MAINNET:
     case ChainID.POLYGON_MUMBAI:
+    case ChainID.POLYGON_AMOY:
       return process.env.POLYGONSCAN_API_KEY || ""
     case ChainID.OPTIMISM_MAINNET:
     case ChainID.OPTIMISM_SEPOLIA:
@@ -39,6 +41,7 @@ export const getAPIKey = (network: string): string => {
     case ChainID.CELO_ALFAJORES:
       return process.env.CELOSCAN_API_KEY || ""
     case ChainID.GNOSIS_MAINNET:
+    case ChainID.GNOSIS_CHIADO:
       return process.env.GNOSISSCAN_API_KEY || ""
     case ChainID.CRONOS_MAINNET:
       return process.env.CRONOSCAN_API_KEY || ""
@@ -51,6 +54,18 @@ export const getAPIKey = (network: string): string => {
     case ChainID.WEMIX_MAINNET:
     case ChainID.WEMIX_TESTNET:
       return process.env.WEMIXSCAN_API_KEY || ""
+    case ChainID.BLAST_MAINNET:
+    case ChainID.BLAST_SEPOLIA:
+      return process.env.BLASTSCAN_API_KEY || ""
+    case ChainID.FRAXSCAN_MAINNET:
+    case ChainID.FRAXSCAN_TESTNET:
+      return process.env.FRAXSCAN_API_KEY || ""
+    case ChainID.ZKEVM_POLYGON:
+    case ChainID.ZKEVM_POLYGON_CARDONA:
+      return process.env.ZKEVM_POLYSCAN_API_KEY || ""
+    case ChainID.KROMA_MAINNET:
+    case ChainID.KROMA_SEPOLIA:
+      return process.env.KROMA_API_KEY || ""
     default:
       return ""
   }

@@ -5,9 +5,13 @@ sidebar_position: 1
 import SolideIDE from '@site/src/components/SolideIDE'
 import { SolideURL } from '@site/src/lib/constants'
 
-# EVM - Load Smart Contract from GitHub
+# Import a Solidty from Github to Solide
 
 This document provides instructions on how to load a smart contract directly from GitHub using an iframe or via SolideIDE.
+
+## Resource
+- [Source Code](https://github.com/solide-project/solide)
+- [Solide IDE](https://solide0x.tech/)
 
 ## Parameters
 

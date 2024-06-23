@@ -83,6 +83,7 @@ const data: { [key: string]: string } = {
   [ChainID.REI_MAINNET]: "https://scan.rei.network",
   [ChainID.REI_TESTNET]: "https://scan-test.rei.network",
   [ChainID.ZORA_NETWORK_MAINNET]: "https://explorer.zora.energy",
+  [ChainID.ZORA_NETWORK_TESTNET]: "https://sepolia.explorer.zora.energy",
   [ChainID.CALLISTO_MAINNET]: "https://explorer.callisto.network",
   [ChainID.ZKSYNC_MAINNET]: "https://explorer.zksync.io",
   [ChainID.ZKSYNC_SEPOLIA]: "https://sepolia.explorer.zksync.io",
@@ -93,6 +94,7 @@ const data: { [key: string]: string } = {
   [ChainID.RONIN_MAINNET]: "https://app.roninchain.com",
   [ChainID.RONIN_SAIGON_TESTNET]: "https://saigon-app.roninchain.com",
   [ChainID.TRON_MAINNET]: "https://tronscan.org/#",
+  [ChainID.TRON_NILE_TESTNET]: "https://nile.tronscan.org/#",
   [ChainID.TRON_SHASTA_TESTNET]: "https://shasta.tronscan.org/#",
   [ChainID.BEAM_MAINNET]: "https://avascan.info/blockchain/beam",
   [ChainID.CARBON_EVM_MAINNET]: "https://evm-scan.carbon.network",
@@ -111,6 +113,64 @@ const data: { [key: string]: string } = {
   [ChainID.ROOTSTOCK_TESTNET]: "https://rootstock-testnet.blockscout.com",
   [ChainID.LIGHTLINK_PHOENIX_MAINNET]: "https://phoenix.lightlink.io",
   [ChainID.LIGHTLINK_PEGASUS_TESTNET]: "https://pegasus.lightlink.io",
+  [ChainID.ETHERLINK_TESTNET]: "https://testnet-explorer.etherlink.com",
+  [ChainID.SHARDEUM_SPHINX_1_X]: "https://explorer-sphinx.shardeum.org",
+  [ChainID.VELAS_MAINNET]: "https://evmexplorer.velas.com",
+  [ChainID.MODE_MAINNET]: "https://explorer.mode.network",
+  [ChainID.MODE_SEPOLIA]: "https://sepolia.explorer.mode.network",
+  [ChainID.MORPH_TESTNET]: "https://explorer-testnet.morphl2.io",
+  [ChainID.BLAST_MAINNET]: "https://api.blastscan.io",
+  [ChainID.BLAST_SEPOLIA]: "https://api-sepolia.blastscan.io",
+  [ChainID.SYNDICATE_FRAME_MAINNET]: "https://explorer-frame.syndicate.io",
+  [ChainID.DOS_MAINNET]: "https://doscan.io",
+  [ChainID.DOS_TESTNET]: "https://test.doscan.io",
+  [ChainID.DEGEN_MAINNET]: "https://explorer.degen.tips",
+  [ChainID.TAIKO_KATLA_TESTNET]: "https://explorer.katla.taiko.xyz",
+  [ChainID.SHIMMER_MAINNET]: "https://explorer.evm.shimmer.network",
+  [ChainID.SHIMMER_TESTNET]: "https://explorer.evm.testnet.shimmer.network",
+  [ChainID.FRAXSCAN_MAINNET]: "https://fraxscan.com",
+  [ChainID.FRAXSCAN_TESTNET]: "https://holesky.fraxscan.com",
+  [ChainID.XRP_SIDECHAIN]: "https://evm-sidechain.xrpl.org",
+  [ChainID.CORE_MAINNET]: "https://scan.coredao.org",
+  [ChainID.ZKEVM_POLYGON]: "https://zkevm.polygonscan.com",
+  [ChainID.ZKEVM_POLYGON_CARDONA]: "https://cardona-zkevm.polygonscan.com",
+  [ChainID.BITLAYER_MAINNET]: "https://www.btrscan.com",
+  [ChainID.BITLAYER_TESTNET]: "https://testnet-scan.bitlayer.org",
+  [ChainID.ETHEREUM_CLASSIC_MAINNET]: "https://etc.blockscout.com",
+  [ChainID.ETHEREUM_CLASSIC_TESTNET]: "https://etc-mordor.blockscout.com",
+  [ChainID.STABILITY_MAINNET]: "https://stability.blockscout.com",
+  [ChainID.STABILITY_TESTNET]: "https://stability-testnet.blockscout.com",
+  [ChainID.ARBITRUM_SEPOLIA]: "https://sepolia.arbiscan.io",
+  [ChainID.KROMA_MAINNET]: "https://kromascan.com",
+  [ChainID.KROMA_SEPOLIA]: "https://sepolia.kromascan.com",
+  [ChainID.POLYGON_AMOY]: "https://amoy.polygonscan.com",
+  [ChainID.GNOSIS_CHIADO]: "https://gnosis-chiado.blockscout.com",
+  [ChainID.COTI_DEVNET]: "https://explorer-devnet.coti.io",
 }
 
 export const getExplorer = (network: string): string => data[network] || ""
+
+export const getContractExplorer = (network: string, contract: string): string => {
+  const explorer = getExplorer(network)
+  let addressPath = ""
+
+  switch (network) {
+    case ChainID.TRON_MAINNET:
+    case ChainID.TRON_SHASTA_TESTNET:
+    // @ts-expect-error
+    case ChainID.COTI_DEVNET:
+      addressPath = `contract/${contract}`
+    case ChainID.PALM_MAINNET:
+    case ChainID.PALM_TESTNET:
+      addressPath = `contracts/${contract}`
+      break
+    case ChainID.SHARDEUM_SPHINX_1_X:
+      addressPath = `account/${contract}`
+      break
+    default:
+      addressPath = `address/${contract}`
+      break
+  }
+
+  return `${explorer}/${addressPath}`
+}
