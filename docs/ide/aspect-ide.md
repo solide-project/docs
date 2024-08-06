@@ -9,8 +9,6 @@ import { SolideURL } from '@site/src/lib/constants'
 
 This document provides instructions on how to load the Aspect IDE using an iframe or via SolideIDE.
 
-# Movide (Coming Soon!)
-
 ## Resource
 - [Source Code](https://github.com/solide-project/aspectide)
 - [Aspect IDE](https://aspect.solide0x.tech/)
@@ -24,8 +22,6 @@ the following example is loading the (`Aspect.ts`) contract in Solide IDE.
   src="{SolideURL}/aspect"
   height="400" width="300"></iframe>
 ```
-
-<SolideIDE url={`${SolideURL}/aspect`}></SolideIDE>
 
 # To load the Aspect IDE from GitHub
 

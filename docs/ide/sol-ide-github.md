@@ -37,7 +37,7 @@ The following example is loading the (`MintableERC20.sol`) contract from our Sol
   src="{SolideURL}?url=https://github.com/solide-project/solide-guides/blob/master/src/openzeppelin/MintableERC20/MintableERC20.sol"
   height="400" width="300"></iframe>
 ```
-
+<!-- 
 <SolideIDE 
   url={`${SolideURL}?url=https://github.com/solide-project/solide-guides/blob/master/src/openzeppelin/MintableERC20/MintableERC20.sol`}>
-</SolideIDE>
+</SolideIDE> -->

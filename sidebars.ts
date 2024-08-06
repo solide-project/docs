@@ -27,8 +27,8 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '💡 Solide IDE',
-      collapsible: true,
+      label: '💡 Solide IDEs',
+      collapsible: false,
       items: [
         {
           type: 'category',
@@ -45,6 +45,11 @@ const sidebars: SidebarsConfig = {
               label: 'Import Github Repository',
             },
           ]
+        },
+        {
+          type: 'doc',
+          id: 'ide/stylus-ide',
+          label: '🔵 Stylide',
         },
         {
           type: 'doc',

@@ -29,4 +29,4 @@ The following example demonstrates how to load a verified Wrapped Ether (`MaticW
   height="400" width="300"></iframe>
 ```
 
-<SolideIDE url={`${SolideURL}/address/137/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619`}></SolideIDE>
+<!-- <SolideIDE url={`${SolideURL}/address/137/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619`}></SolideIDE> -->
