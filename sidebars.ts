@@ -48,6 +48,16 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'doc',
+          id: 'ide/move-ide',
+          label: '🟡 Movide',
+        },
+        {
+          type: 'doc',
+          id: 'ide/sway-ide',
+          label: '🟢 Swayide',
+        },
+        {
+          type: 'doc',
           id: 'ide/stylus-ide',
           label: '🔵 Stylide',
         },
@@ -56,10 +66,39 @@ const sidebars: SidebarsConfig = {
           id: 'ide/aspect-ide',
           label: '🔵 Aspectide (Comming Soon)',
         },
+      ],
+    },
+    {
+      type: 'category',
+      label: '🎓 Proof of Learn',
+      collapsible: true,
+      items: [
         {
           type: 'doc',
-          id: 'ide/move-ide',
-          label: '🟡 Movide (Comming Soon)',
+          id: 'pol/intro',
+          label: 'Introduction',
+        },
+        {
+          type: 'doc',
+          id: 'pol/contribution',
+          label: 'Contribution',
+        },
+        {
+          type: 'category',
+          label: '🔎 Quest',
+          collapsible: true,
+          items: [
+            {
+              type: 'doc',
+              id: 'pol/quest/quest-deployment',
+              label: 'Deployment',
+            },
+            {
+              type: 'doc',
+              id: 'pol/quest/quest-transaction',
+              label: 'Transaction',
+            },
+          ],
         },
       ],
     },
@@ -81,7 +120,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'doc',
           id: 'tools/awesome-solidity-learn',
-          label: '👓 Awesome Solidity Learn (New!)',
+          label: '👓 Awesome Solidity Learn',
         },
       ],
     },

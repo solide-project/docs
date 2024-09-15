@@ -2,31 +2,6 @@
 sidebar_position: 1
 ---
 
-import SolideIDE from '@site/src/components/SolideIDE'
-import { SolideURL } from '@site/src/lib/constants'
-
 # Aspectide (Coming Soon!)
 
-This document provides instructions on how to load the Aspect IDE using an iframe or via SolideIDE.
-
-## Resource
-- [Source Code](https://github.com/solide-project/aspectide)
-- [Aspect IDE](https://aspect.solide0x.tech/)
-
-## Sample
-
-the following example is loading the (`Aspect.ts`) contract in Solide IDE.
-
-```html title="Aspect.ts" showLineNumbers
-<iframe 
-  src="{SolideURL}/aspect"
-  height="400" width="300"></iframe>
-```
-
-# To load the Aspect IDE from GitHub
-
-## Parameters
-
-### Required
-- `url`: Required. The URL of the contract source code to load. This must be in a valid GitHub typescript file format.
-
+AspectIDE is a cutting-edge integrated development environment (IDE) designed to streamline the development of smart contracts across multiple blockchain platforms. With its robust and intuitive interface, AspectIDE provides developers with powerful tools for writing, testing, and deploying smart contracts seamlessly. The IDE supports a range of blockchain languages and standards, offering features such as real-time syntax highlighting, automated code completion, and integrated debugging. AspectIDE aims to enhance productivity and simplify the development process, making it easier for developers to build and manage their blockchain projects efficiently.
