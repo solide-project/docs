@@ -1,0 +1,11 @@
+---
+sidebar_position: 1
+---
+
+# Support Chains
+
+Solide IDE aims to support a wide range of blockchain protocols and ecosystems. Support Chains are designed to enhance your development experience by providing comprehensive assistance in loading and exploring verified smart contracts different blockchain networks and protocols. The following is an overview of the supported chains and protocols in Solide IDE, with more to be added in the future.
+
+import ChainSupport from '@site/src/components/ChainSupport'
+
+<ChainSupport />

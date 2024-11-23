@@ -1,0 +1,1481 @@
+{
+	"id": 0,
+	"name": "typedoc",
+	"variant": "project",
+	"kind": 1,
+	"flags": {},
+	"children": [
+		{
+			"id": 7,
+			"name": "Deployment",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "Represents a deployment submission, with additional bytecode information.\r\n\r\nUsed for quest that requiring deployment a smart contract"
+					}
+				],
+				"blockTags": [
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "text",
+								"text": "This is an of deploying a smart contract to Open Campus testnet. The bytecode property is the hash bytecode of the\r\ndesire contract from course\r\n\r\n"
+							},
+							{
+								"kind": "code",
+								"text": "```json\r\n{\r\n     \"path\": \"01_deploy_your_first_token/05_deploy\",\r\n     \"type\": \"deployment\",\r\n     \"chain\": \"656476\",\r\n     \"bytecode\": \"0x86d1b8039b28cf6e8bfbc8ec91d3e4cda65348f689bdc101b1fe39a9f590dcba\"\r\n}\r\n```"
+							}
+						]
+					},
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "code",
+								"text": "```json\r\n{\r\n     \"path\": \"01_deploy_your_first_token/05_deploy\",\r\n     \"description\": \"Deploy coin contract on Sui testnet\",\r\n     \"type\": \"deployment\",\r\n     \"chain\": \"1282977196\",\r\n     \"bytecode\": \"0xab1e7fe48a2491a5f6932f8d78b10809f1d70f029a964aa0870daf563748afe7\"\r\n}\r\n```"
+							}
+						]
+					}
+				]
+			},
+			"children": [
+				{
+					"id": 9,
+					"name": "bytecode",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "A SHA-256 hash of the deployment's bytecode.\r\nThis ensures integrity and allows verification of the deployed contract."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 79,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 12,
+					"name": "chain",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The blockchain network identifier where the submission is intended to be deployed.\r\nFor example, this could be a chain name (e.g., \"Ethereum\") or chain ID."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 24,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 4,
+						"name": "Submission.chain"
+					}
+				},
+				{
+					"id": 13,
+					"name": "description",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true,
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "An optional description providing additional context about the submission.\r\nThis can include the purpose, usage, or metadata about the submission."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 36,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 6,
+						"name": "Submission.description"
+					}
+				},
+				{
+					"id": 11,
+					"name": "id",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "A unique identifier for the submission.\r\nThis ID is used to differentiate between various submissions in the system."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 18,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 3,
+						"name": "Submission.id"
+					}
+				},
+				{
+					"id": 10,
+					"name": "path",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true,
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Optional file path associated with the submission.\r\nThis could be a location where relevant files (e.g., bytecode or ABI) are stored."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 12,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 2,
+						"name": "Submission.path"
+					}
+				},
+				{
+					"id": 8,
+					"name": "type",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Indicates that this submission is specifically a deployment.\r\nThe value is always \"deployment\" for this interface."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 73,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "literal",
+						"value": "deployment"
+					},
+					"overwrites": {
+						"type": "reference",
+						"target": 5,
+						"name": "Submission.type"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						9,
+						12,
+						13,
+						11,
+						10,
+						8
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "submission.ts",
+					"line": 68,
+					"character": 17
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"target": 1,
+					"name": "Submission",
+					"package": "typedoc"
+				}
+			]
+		},
+		{
+			"id": 33,
+			"name": "POAPMetadata",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "Represents metadata for a Proof of Learn POAP."
+					}
+				],
+				"blockTags": [
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "code",
+								"text": "```json\r\n{\r\n     \"name\": \"Proof of Learn Genesis\",\r\n     \"description\": \"This is for all those that participated in the Proof of Learn Genesis event. This is a special NFT so thanks :)\",\r\n     \"image\": \"ipfs://QmStw2E79stkmBH9kjjRYHVoPNztrbQsxXchfxTnmRVh3h\"\r\n}\r\n```"
+							}
+						]
+					}
+				]
+			},
+			"children": [
+				{
+					"id": 35,
+					"name": "description",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "A description of the POAP, detailing its purpose or significance."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@example",
+								"content": [
+									{
+										"kind": "code",
+										"text": "```ts\nThis is for all those that participated in the Proof of Learn Genesis event. This is a special NFT so thanks :)\n```"
+									}
+								]
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "poap.ts",
+							"line": 23,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 36,
+					"name": "image",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The image URL for the POAP, must be IPFS cid."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@example",
+								"content": [
+									{
+										"kind": "code",
+										"text": "```ts\nipfs://QmStw2E79stkmBH9kjjRYHVoPNztrbQsxXchfxTnmRVh3h\n```"
+									}
+								]
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "poap.ts",
+							"line": 29,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 34,
+					"name": "name",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The name of the POAP."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@example",
+								"content": [
+									{
+										"kind": "code",
+										"text": "```ts\nProof of Learn Genesis\n```"
+									}
+								]
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "poap.ts",
+							"line": 17,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						35,
+						36,
+						34
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "poap.ts",
+					"line": 12,
+					"character": 17
+				}
+			]
+		},
+		{
+			"id": 23,
+			"name": "QuestConfig",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"children": [
+				{
+					"id": 24,
+					"name": "metadata",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "quest.ts",
+							"line": 4,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": 26,
+						"name": "QuestMetadata",
+						"package": "typedoc"
+					}
+				},
+				{
+					"id": 25,
+					"name": "quests",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "quest.ts",
+							"line": 5,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "union",
+							"types": [
+								{
+									"type": "reference",
+									"target": 7,
+									"name": "Deployment",
+									"package": "typedoc"
+								},
+								{
+									"type": "reference",
+									"target": 14,
+									"name": "Transaction",
+									"package": "typedoc"
+								}
+							]
+						}
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						24,
+						25
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "quest.ts",
+					"line": 3,
+					"character": 17
+				}
+			]
+		},
+		{
+			"id": 26,
+			"name": "QuestMetadata",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "Represents a course object with metadata and deployment details."
+					}
+				],
+				"blockTags": [
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "code",
+								"text": "```json\r\n{\r\n     \"owner\": \"polearn\",\r\n     \"name\": \"pol-template\",\r\n     \"chain\": \"656476\",\r\n     \"title\": \"Deploy Your First Smart Contract on Open Campus\",\r\n     \"description\": \"This course guides you through deploying your first smart contract on Open Campus. It also serves as a template for creating engaging and user-friendly courses on Proof of Learn.\",\r\n     \"image\": \"https://raw.githubusercontent.com/POLearn/pol-template/refs/heads/master/content/assets/cover.png\"\r\n}\r\n```"
+							}
+						]
+					}
+				]
+			},
+			"children": [
+				{
+					"id": 29,
+					"name": "chain",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The chain identifier where the course's smart contract is deployed.\r\nThis is often a numerical chain ID."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@example",
+								"content": [
+									{
+										"kind": "code",
+										"text": "```ts\n65647632545435\n```"
+									}
+								]
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "quest.ts",
+							"line": 42,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 31,
+					"name": "description",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "A description of the course.\r\nProvides additional context and information about what the course covers."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@example",
+								"content": [
+									{
+										"kind": "code",
+										"text": "```ts\nThis course guides you through deploying your first smart contract on Open Campus.\n```"
+									}
+								]
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "quest.ts",
+							"line": 56,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 32,
+					"name": "image",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "A URL pointing to the cover image of the course.\r\nThe image is typically used as a visual representation for the course."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@example",
+								"content": [
+									{
+										"kind": "code",
+										"text": "```ts\nhttps://raw.githubusercontent.com/POLearn/pol-template/refs/heads/master/content/assets/cover.png\n```"
+									}
+								]
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "quest.ts",
+							"line": 63,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 28,
+					"name": "name",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The unique name of the course.\r\nTypically used to identify the course programmatically."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@example",
+								"content": [
+									{
+										"kind": "code",
+										"text": "```ts\npol-template\n```"
+									}
+								]
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "quest.ts",
+							"line": 34,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 27,
+					"name": "owner",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The username or identifier of the owner of the course."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@example",
+								"content": [
+									{
+										"kind": "code",
+										"text": "```ts\npolearn\n```"
+									}
+								]
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "quest.ts",
+							"line": 27,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 30,
+					"name": "title",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The title of the course.\r\nThis is a user-friendly name displayed in the UI."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@example",
+								"content": [
+									{
+										"kind": "code",
+										"text": "```ts\nDeploy Your First Smart Contract on Open Campus\n```"
+									}
+								]
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "quest.ts",
+							"line": 49,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						29,
+						31,
+						32,
+						28,
+						27,
+						30
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "quest.ts",
+					"line": 22,
+					"character": 17
+				}
+			]
+		},
+		{
+			"id": 1,
+			"name": "Submission",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "Base interface for submissions, representing a common schema for both deployments and transactions."
+					}
+				]
+			},
+			"children": [
+				{
+					"id": 4,
+					"name": "chain",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The blockchain network identifier where the submission is intended to be deployed.\r\nFor example, this could be a chain name (e.g., \"Ethereum\") or chain ID."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 24,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 6,
+					"name": "description",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "An optional description providing additional context about the submission.\r\nThis can include the purpose, usage, or metadata about the submission."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 36,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 3,
+					"name": "id",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "A unique identifier for the submission.\r\nThis ID is used to differentiate between various submissions in the system."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 18,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 2,
+					"name": "path",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Optional file path associated with the submission.\r\nThis could be a location where relevant files (e.g., bytecode or ABI) are stored."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 12,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 5,
+					"name": "type",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The type of submission, which can be either \"deployment\" or \"transaction\".\r\nThis property determines the specific details required for the submission."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 30,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "literal",
+								"value": "deployment"
+							},
+							{
+								"type": "literal",
+								"value": "transaction"
+							}
+						]
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						4,
+						6,
+						3,
+						2,
+						5
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "submission.ts",
+					"line": 7,
+					"character": 17
+				}
+			],
+			"extendedBy": [
+				{
+					"type": "reference",
+					"target": 7,
+					"name": "Deployment"
+				},
+				{
+					"type": "reference",
+					"target": 14,
+					"name": "Transaction"
+				}
+			]
+		},
+		{
+			"id": 14,
+			"name": "Transaction",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "Represents a transaction submission, with ABI and contract details.\r\n\r\nUsed for quests that require the execution of a smart contract transaction."
+					}
+				],
+				"blockTags": [
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "text",
+								"text": "This example demonstrates submitting a transaction to invoke a function on a deployed contract.\r\nThe abi property contains the contract's ABI functions and args contains the necessary arguments for the transaction.\r\n\r\n"
+							},
+							{
+								"kind": "code",
+								"text": "```json\r\n{\r\n     \"path\": \"01_interact_with_contract/02_execute_transaction\",\r\n     \"type\": \"transaction\",\r\n     \"chain\": \"656476\",\r\n     \"abi\": [\r\n         {\r\n             \"name\": \"transfer\",\r\n             \"inputs\": [\r\n                 { \"name\": \"to\", \"type\": \"address\" },\r\n                 { \"name\": \"amount\", \"type\": \"uint256\" }\r\n             ],\r\n             \"outputs\": []\r\n         }\r\n     ],\r\n     \"contract\": \"0x1234567890abcdef1234567890abcdef12345678\",\r\n     \"args\": [\"0xabcdefabcdefabcdefabcdefabcdefabcdefabcdef\", 1000]\r\n}\r\n```"
+							}
+						]
+					},
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "text",
+								"text": "This example shows a transaction submission for interacting with a contract on the Ethereum network.\r\n\r\n"
+							},
+							{
+								"kind": "code",
+								"text": "```json\r\n{\r\n     \"path\": \"02_interact_with_erc20/01_send_tokens\",\r\n     \"description\": \"Send tokens from one address to another\",\r\n     \"type\": \"transaction\",\r\n     \"chain\": \"1\",\r\n     \"abi\": [\r\n         {\r\n             \"name\": \"transfer\",\r\n             \"inputs\": [\r\n                 { \"name\": \"to\", \"type\": \"address\" },\r\n                 { \"name\": \"amount\", \"type\": \"uint256\" }\r\n             ],\r\n             \"outputs\": []\r\n         }\r\n     ],\r\n     \"contract\": \"0xabcdefabcdefabcdefabcdefabcdefabcdefabcdef\",\r\n     \"args\": [\"0x1234567890abcdef1234567890abcdef12345678\", 500]\r\n}\r\n```"
+							}
+						]
+					}
+				]
+			},
+			"children": [
+				{
+					"id": 16,
+					"name": "abi",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The ABI (Application Binary Interface) of the contract being interacted with.\r\nThis defines the functions and parameters available for the transaction."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 145,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "any"
+						}
+					}
+				},
+				{
+					"id": 18,
+					"name": "args",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The arguments required for the transaction.\r\nThese values will be passed to the contract function as input parameters."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 157,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "any"
+						}
+					}
+				},
+				{
+					"id": 21,
+					"name": "chain",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The blockchain network identifier where the submission is intended to be deployed.\r\nFor example, this could be a chain name (e.g., \"Ethereum\") or chain ID."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 24,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 4,
+						"name": "Submission.chain"
+					}
+				},
+				{
+					"id": 17,
+					"name": "contract",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The address of the contract to be interacted with.\r\nThis is optional and can be omitted if interacting with a contract that does not require a specific address."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 151,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 22,
+					"name": "description",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true,
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "An optional description providing additional context about the submission.\r\nThis can include the purpose, usage, or metadata about the submission."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 36,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 6,
+						"name": "Submission.description"
+					}
+				},
+				{
+					"id": 20,
+					"name": "id",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "A unique identifier for the submission.\r\nThis ID is used to differentiate between various submissions in the system."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 18,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 3,
+						"name": "Submission.id"
+					}
+				},
+				{
+					"id": 19,
+					"name": "path",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true,
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Optional file path associated with the submission.\r\nThis could be a location where relevant files (e.g., bytecode or ABI) are stored."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 12,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 2,
+						"name": "Submission.path"
+					}
+				},
+				{
+					"id": 15,
+					"name": "type",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Indicates that this submission is specifically a transaction.\r\nThe value is always \"transaction\" for this interface."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 139,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "literal",
+						"value": "transaction"
+					},
+					"overwrites": {
+						"type": "reference",
+						"target": 5,
+						"name": "Submission.type"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						16,
+						18,
+						21,
+						17,
+						22,
+						20,
+						19,
+						15
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "submission.ts",
+					"line": 134,
+					"character": 17
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"target": 1,
+					"name": "Submission",
+					"package": "typedoc"
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "Interfaces",
+			"children": [
+				7,
+				33,
+				23,
+				26,
+				1,
+				14
+			]
+		}
+	],
+	"categories": [
+		{
+			"title": "Other",
+			"children": [
+				33,
+				23,
+				26,
+				1
+			]
+		},
+		{
+			"title": "Submission",
+			"children": [
+				7,
+				14
+			]
+		}
+	],
+	"packageName": "typedoc",
+	"symbolIdMap": {
+		"0": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": ""
+		},
+		"1": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission"
+		},
+		"2": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.path"
+		},
+		"3": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.id"
+		},
+		"4": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.chain"
+		},
+		"5": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.type"
+		},
+		"6": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.description"
+		},
+		"7": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Deployment"
+		},
+		"8": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Deployment.type"
+		},
+		"9": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Deployment.bytecode"
+		},
+		"10": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.path"
+		},
+		"11": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.id"
+		},
+		"12": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.chain"
+		},
+		"13": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.description"
+		},
+		"14": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Transaction"
+		},
+		"15": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Transaction.type"
+		},
+		"16": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Transaction.abi"
+		},
+		"17": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Transaction.contract"
+		},
+		"18": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Transaction.args"
+		},
+		"19": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.path"
+		},
+		"20": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.id"
+		},
+		"21": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.chain"
+		},
+		"22": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.description"
+		},
+		"23": {
+			"sourceFileName": "src/quest.ts",
+			"qualifiedName": "QuestConfig"
+		},
+		"24": {
+			"sourceFileName": "src/quest.ts",
+			"qualifiedName": "QuestConfig.metadata"
+		},
+		"25": {
+			"sourceFileName": "src/quest.ts",
+			"qualifiedName": "QuestConfig.quests"
+		},
+		"26": {
+			"sourceFileName": "src/quest.ts",
+			"qualifiedName": "QuestMetadata"
+		},
+		"27": {
+			"sourceFileName": "src/quest.ts",
+			"qualifiedName": "QuestMetadata.owner"
+		},
+		"28": {
+			"sourceFileName": "src/quest.ts",
+			"qualifiedName": "QuestMetadata.name"
+		},
+		"29": {
+			"sourceFileName": "src/quest.ts",
+			"qualifiedName": "QuestMetadata.chain"
+		},
+		"30": {
+			"sourceFileName": "src/quest.ts",
+			"qualifiedName": "QuestMetadata.title"
+		},
+		"31": {
+			"sourceFileName": "src/quest.ts",
+			"qualifiedName": "QuestMetadata.description"
+		},
+		"32": {
+			"sourceFileName": "src/quest.ts",
+			"qualifiedName": "QuestMetadata.image"
+		},
+		"33": {
+			"sourceFileName": "src/poap.ts",
+			"qualifiedName": "POAPMetadata"
+		},
+		"34": {
+			"sourceFileName": "src/poap.ts",
+			"qualifiedName": "POAPMetadata.name"
+		},
+		"35": {
+			"sourceFileName": "src/poap.ts",
+			"qualifiedName": "POAPMetadata.description"
+		},
+		"36": {
+			"sourceFileName": "src/poap.ts",
+			"qualifiedName": "POAPMetadata.image"
+		}
+	},
+	"files": {
+		"entries": {
+			"1": "src/index.ts"
+		},
+		"reflections": {
+			"1": 0
+		}
+	}
+}
