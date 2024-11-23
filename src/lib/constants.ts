@@ -1,1 +1,0 @@
-export const SolideURL = "https://solide0x.tech";
