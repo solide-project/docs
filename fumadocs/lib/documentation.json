@@ -6,6 +6,411 @@
 	"flags": {},
 	"children": [
 		{
+			"id": 32,
+			"name": "ContractData",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "Represents retrieving a property value from a deployed smart contract.\r\n\r\nUsed for queries that fetch contract state variables based on ABI and arguments."
+					}
+				],
+				"blockTags": [
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "text",
+								"text": "This example retrieves a contract's "
+							},
+							{
+								"kind": "code",
+								"text": "`totalSupply`"
+							},
+							{
+								"kind": "text",
+								"text": " value on the Open Campus testnet.\r\nThe "
+							},
+							{
+								"kind": "code",
+								"text": "`contract`"
+							},
+							{
+								"kind": "text",
+								"text": " property specifies the deployed contract address, "
+							},
+							{
+								"kind": "code",
+								"text": "`variable`"
+							},
+							{
+								"kind": "text",
+								"text": " defines the function or state variable being queried, \r\nand the "
+							},
+							{
+								"kind": "code",
+								"text": "`abi`"
+							},
+							{
+								"kind": "text",
+								"text": " represents the function's ABI definition.\r\n\r\n"
+							},
+							{
+								"kind": "code",
+								"text": "```json\r\n{\r\n     \"path\": \"03_query_contract/01_get_total_supply\",\r\n     \"type\": \"data\",\r\n     \"chain\": \"656476\",\r\n     \"contract\": \"0x1234567890abcdef1234567890abcdef12345678\",\r\n     \"variable\": \"totalSupply\",\r\n     \"abi\": [\r\n         {\r\n             \"constant\": true,\r\n             \"inputs\": [],\r\n             \"name\": \"totalSupply\",\r\n             \"outputs\": [{ \"name\": \"\", \"type\": \"uint256\" }],\r\n             \"stateMutability\": \"view\",\r\n             \"type\": \"function\"\r\n         }\r\n     ]\r\n}\r\n```"
+							}
+						]
+					},
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "text",
+								"text": "Fetching a user's token balance from a deployed contract on the Sui testnet.\r\nThe "
+							},
+							{
+								"kind": "code",
+								"text": "`args`"
+							},
+							{
+								"kind": "text",
+								"text": " property includes the user address as an input argument.\r\n\r\n"
+							},
+							{
+								"kind": "code",
+								"text": "```json\r\n{\r\n     \"path\": \"03_query_contract/02_get_balance\",\r\n     \"description\": \"Retrieve the token balance of a specific address\",\r\n     \"type\": \"data\",\r\n     \"chain\": \"1282977196\",\r\n     \"contract\": \"0xabcdef1234567890abcdef1234567890abcdef12\",\r\n     \"variable\": \"balanceOf\",\r\n     \"abi\": [\r\n         {\r\n             \"constant\": true,\r\n             \"inputs\": [{ \"name\": \"owner\", \"type\": \"address\" }],\r\n             \"name\": \"balanceOf\",\r\n             \"outputs\": [{ \"name\": \"balance\", \"type\": \"uint256\" }],\r\n             \"stateMutability\": \"view\",\r\n             \"type\": \"function\"\r\n         }\r\n     ],\r\n     \"args\": [\"0x89f7a45cde901b23c45678abcd900ef12a34567b\"]\r\n}\r\n```"
+							}
+						]
+					}
+				]
+			},
+			"children": [
+				{
+					"id": 36,
+					"name": "abi",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The ABI (Application Binary Interface) definition for the queried function or variable.\r\nThis should match the contract's deployed ABI format."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 304,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L304"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "any"
+						}
+					}
+				},
+				{
+					"id": 37,
+					"name": "args",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Optional arguments required for the function call.\r\nThese should be passed in the same order as defined in the contract's ABI."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 310,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L310"
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "any"
+						}
+					}
+				},
+				{
+					"id": 40,
+					"name": "chain",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The blockchain network identifier where the submission is intended to be deployed.\r\nFor example, this could be a chain name (e.g., \"Ethereum\") or chain ID."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 24,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L24"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 4,
+						"name": "Submission.chain"
+					}
+				},
+				{
+					"id": 34,
+					"name": "contract",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The deployed contract address being queried.\r\nThis should be a valid blockchain address prefixed with \"0x\"."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 293,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L293"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 41,
+					"name": "description",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true,
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "An optional description providing additional context about the submission.\r\nThis can include the purpose, usage, or metadata about the submission."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 36,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L36"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 6,
+						"name": "Submission.description"
+					}
+				},
+				{
+					"id": 39,
+					"name": "id",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "A unique identifier for the submission.\r\nThis ID is used to differentiate between various submissions in the system."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 18,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L18"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 3,
+						"name": "Submission.id"
+					}
+				},
+				{
+					"id": 38,
+					"name": "path",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true,
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Optional file path associated with the submission.\r\nThis could be a location where relevant files (e.g., bytecode or ABI) are stored."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 12,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L12"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 2,
+						"name": "Submission.path"
+					}
+				},
+				{
+					"id": 33,
+					"name": "type",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Specifies that this submission type is querying contract data.\r\nThe value is always \"data\" for this interface."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 287,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L287"
+						}
+					],
+					"type": {
+						"type": "literal",
+						"value": "data"
+					},
+					"overwrites": {
+						"type": "reference",
+						"target": 5,
+						"name": "Submission.type"
+					}
+				},
+				{
+					"id": 35,
+					"name": "variable",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The name of the function or state variable being retrieved from the contract."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 298,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L298"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						36,
+						37,
+						40,
+						34,
+						41,
+						39,
+						38,
+						33,
+						35
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "submission.ts",
+					"line": 282,
+					"character": 17,
+					"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L282"
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"target": 1,
+					"name": "Submission",
+					"package": "typedoc"
+				}
+			]
+		},
+		{
 			"id": 7,
 			"name": "Deployment",
 			"variant": "declaration",
@@ -273,7 +678,378 @@
 			]
 		},
 		{
-			"id": 33,
+			"id": 23,
+			"name": "NativeValue",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "Represents a value submission, including a sender address and a specific numerical value.\r\n\r\nUsed for quests or transactions that require sending a value from a specified address."
+					}
+				],
+				"blockTags": [
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "text",
+								"text": "This example represents a submission where a user sends a specific value on the Open Campus testnet.\r\nThe "
+							},
+							{
+								"kind": "code",
+								"text": "`from`"
+							},
+							{
+								"kind": "text",
+								"text": " property specifies the sender's address, and the "
+							},
+							{
+								"kind": "code",
+								"text": "`value`"
+							},
+							{
+								"kind": "text",
+								"text": " represents the numerical amount.\r\n\r\n"
+							},
+							{
+								"kind": "code",
+								"text": "```json\r\n{\r\n     \"path\": \"02_send_value/01_basic_transfer\",\r\n     \"type\": \"value\",\r\n     \"chain\": \"656476\",\r\n     \"from\": \"0xa3b2c4d5e6f7890abc123456789def01a2b3c4d5\",\r\n     \"value\": \"100\",\r\n     \"symbol\": \"gte\"\r\n}\r\n```"
+							}
+						]
+					},
+					{
+						"tag": "@example",
+						"content": [
+							{
+								"kind": "code",
+								"text": "```json\r\n{\r\n     \"path\": \"02_send_value/01_basic_transfer\",\r\n     \"description\": \"Transfer at least 50 tokens on Sui testnet\",\r\n     \"type\": \"value\",\r\n     \"chain\": \"1282977196\",\r\n     \"from\": \"0x89f7a45cde901b23c45678abcd900ef12a34567b\",\r\n     \"value\": \"50\",\r\n     \"symbol\": \"gte\"\r\n}\r\n```"
+							}
+						]
+					}
+				]
+			},
+			"children": [
+				{
+					"id": 30,
+					"name": "chain",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The blockchain network identifier where the submission is intended to be deployed.\r\nFor example, this could be a chain name (e.g., \"Ethereum\") or chain ID."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 24,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L24"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 4,
+						"name": "Submission.chain"
+					}
+				},
+				{
+					"id": 31,
+					"name": "description",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true,
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "An optional description providing additional context about the submission.\r\nThis can include the purpose, usage, or metadata about the submission."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 36,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L36"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 6,
+						"name": "Submission.description"
+					}
+				},
+				{
+					"id": 25,
+					"name": "from",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The sender's address in hexadecimal format.\r\nThis address must be a valid blockchain address prefixed with \"0x\"."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 206,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L206"
+						}
+					],
+					"type": {
+						"type": "templateLiteral",
+						"head": "0x",
+						"tail": [
+							[
+								{
+									"type": "intrinsic",
+									"name": "string"
+								},
+								""
+							]
+						]
+					}
+				},
+				{
+					"id": 29,
+					"name": "id",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "A unique identifier for the submission.\r\nThis ID is used to differentiate between various submissions in the system."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 18,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L18"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 3,
+						"name": "Submission.id"
+					}
+				},
+				{
+					"id": 28,
+					"name": "path",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true,
+						"isInherited": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Optional file path associated with the submission.\r\nThis could be a location where relevant files (e.g., bytecode or ABI) are stored."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 12,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L12"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"target": 2,
+						"name": "Submission.path"
+					}
+				},
+				{
+					"id": 27,
+					"name": "symbol",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "An optional comparison symbol used to define conditions for the value.\r\n- \"eq\"  → Equals\r\n- \"lt\"  → Less than\r\n- \"gt\"  → Greater than\r\n- \"lte\" → Less than or equal to\r\n- \"gte\" → Greater than or equal to"
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 222,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L222"
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "literal",
+								"value": "eq"
+							},
+							{
+								"type": "literal",
+								"value": "lt"
+							},
+							{
+								"type": "literal",
+								"value": "gt"
+							},
+							{
+								"type": "literal",
+								"value": "lte"
+							},
+							{
+								"type": "literal",
+								"value": "gte"
+							}
+						]
+					}
+				},
+				{
+					"id": 24,
+					"name": "type",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Specifies that this submission type is a value transaction.\r\nThe value is always \"value\" for this interface."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 200,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L200"
+						}
+					],
+					"type": {
+						"type": "literal",
+						"value": "value"
+					},
+					"overwrites": {
+						"type": "reference",
+						"target": 5,
+						"name": "Submission.type"
+					}
+				},
+				{
+					"id": 26,
+					"name": "value",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The numerical value associated with the submission.\r\nThis typically represents an amount of tokens or native cryptocurrency."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "submission.ts",
+							"line": 212,
+							"character": 4,
+							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L212"
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						30,
+						31,
+						25,
+						29,
+						28,
+						27,
+						24,
+						26
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "submission.ts",
+					"line": 195,
+					"character": 17,
+					"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/submission.ts#L195"
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"target": 1,
+					"name": "Submission",
+					"package": "typedoc"
+				}
+			]
+		},
+		{
+			"id": 52,
 			"name": "POAPMetadata",
 			"variant": "declaration",
 			"kind": 256,
@@ -299,7 +1075,7 @@
 			},
 			"children": [
 				{
-					"id": 35,
+					"id": 54,
 					"name": "description",
 					"variant": "declaration",
 					"kind": 1024,
@@ -327,7 +1103,7 @@
 						{
 							"fileName": "poap.ts",
 							"line": 23,
-							"character": 4,
+							"character": 2,
 							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/poap.ts#L23"
 						}
 					],
@@ -337,7 +1113,7 @@
 					}
 				},
 				{
-					"id": 36,
+					"id": 55,
 					"name": "image",
 					"variant": "declaration",
 					"kind": 1024,
@@ -365,7 +1141,7 @@
 						{
 							"fileName": "poap.ts",
 							"line": 29,
-							"character": 4,
+							"character": 2,
 							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/poap.ts#L29"
 						}
 					],
@@ -375,7 +1151,7 @@
 					}
 				},
 				{
-					"id": 34,
+					"id": 53,
 					"name": "name",
 					"variant": "declaration",
 					"kind": 1024,
@@ -403,7 +1179,7 @@
 						{
 							"fileName": "poap.ts",
 							"line": 17,
-							"character": 4,
+							"character": 2,
 							"url": "https://github.com/solide-project/docs/blob/6378586838386d2be0dfa49851745cd6d6a63be2/typedoc/src/poap.ts#L17"
 						}
 					],
@@ -417,9 +1193,9 @@
 				{
 					"title": "Properties",
 					"children": [
-						35,
-						36,
-						34
+						54,
+						55,
+						53
 					]
 				}
 			],
@@ -433,14 +1209,14 @@
 			]
 		},
 		{
-			"id": 23,
+			"id": 42,
 			"name": "QuestConfig",
 			"variant": "declaration",
 			"kind": 256,
 			"flags": {},
 			"children": [
 				{
-					"id": 24,
+					"id": 43,
 					"name": "metadata",
 					"variant": "declaration",
 					"kind": 1024,
@@ -455,13 +1231,13 @@
 					],
 					"type": {
 						"type": "reference",
-						"target": 26,
+						"target": 45,
 						"name": "QuestMetadata",
 						"package": "typedoc"
 					}
 				},
 				{
-					"id": 25,
+					"id": 44,
 					"name": "quests",
 					"variant": "declaration",
 					"kind": 1024,
@@ -500,8 +1276,8 @@
 				{
 					"title": "Properties",
 					"children": [
-						24,
-						25
+						43,
+						44
 					]
 				}
 			],
@@ -515,7 +1291,7 @@
 			]
 		},
 		{
-			"id": 26,
+			"id": 45,
 			"name": "QuestMetadata",
 			"variant": "declaration",
 			"kind": 256,
@@ -541,7 +1317,7 @@
 			},
 			"children": [
 				{
-					"id": 29,
+					"id": 48,
 					"name": "chain",
 					"variant": "declaration",
 					"kind": 1024,
@@ -579,7 +1355,7 @@
 					}
 				},
 				{
-					"id": 31,
+					"id": 50,
 					"name": "description",
 					"variant": "declaration",
 					"kind": 1024,
@@ -617,7 +1393,7 @@
 					}
 				},
 				{
-					"id": 32,
+					"id": 51,
 					"name": "image",
 					"variant": "declaration",
 					"kind": 1024,
@@ -655,7 +1431,7 @@
 					}
 				},
 				{
-					"id": 28,
+					"id": 47,
 					"name": "name",
 					"variant": "declaration",
 					"kind": 1024,
@@ -693,7 +1469,7 @@
 					}
 				},
 				{
-					"id": 27,
+					"id": 46,
 					"name": "owner",
 					"variant": "declaration",
 					"kind": 1024,
@@ -731,7 +1507,7 @@
 					}
 				},
 				{
-					"id": 30,
+					"id": 49,
 					"name": "title",
 					"variant": "declaration",
 					"kind": 1024,
@@ -773,12 +1549,12 @@
 				{
 					"title": "Properties",
 					"children": [
-						29,
-						31,
-						32,
-						28,
-						27,
-						30
+						48,
+						50,
+						51,
+						47,
+						46,
+						49
 					]
 				}
 			],
@@ -945,6 +1721,14 @@
 						"types": [
 							{
 								"type": "literal",
+								"value": "data"
+							},
+							{
+								"type": "literal",
+								"value": "value"
+							},
+							{
+								"type": "literal",
 								"value": "deployment"
 							},
 							{
@@ -985,6 +1769,16 @@
 					"type": "reference",
 					"target": 14,
 					"name": "Transaction"
+				},
+				{
+					"type": "reference",
+					"target": 23,
+					"name": "NativeValue"
+				},
+				{
+					"type": "reference",
+					"target": 32,
+					"name": "ContractData"
 				}
 			]
 		},
@@ -1328,10 +2122,12 @@
 		{
 			"title": "Interfaces",
 			"children": [
+				32,
 				7,
-				33,
 				23,
-				26,
+				52,
+				42,
+				45,
 				1,
 				14
 			]
@@ -1341,16 +2137,18 @@
 		{
 			"title": "Other",
 			"children": [
-				33,
-				23,
-				26,
+				52,
+				42,
+				45,
 				1
 			]
 		},
 		{
 			"title": "Submission",
 			"children": [
+				32,
 				7,
+				23,
 				14
 			]
 		}
@@ -1450,58 +2248,134 @@
 			"qualifiedName": "Submission.description"
 		},
 		"23": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "NativeValue"
+		},
+		"24": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "NativeValue.type"
+		},
+		"25": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "NativeValue.from"
+		},
+		"26": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "NativeValue.value"
+		},
+		"27": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "NativeValue.symbol"
+		},
+		"28": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.path"
+		},
+		"29": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.id"
+		},
+		"30": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.chain"
+		},
+		"31": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.description"
+		},
+		"32": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "ContractData"
+		},
+		"33": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "ContractData.type"
+		},
+		"34": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "ContractData.contract"
+		},
+		"35": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "ContractData.variable"
+		},
+		"36": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "ContractData.abi"
+		},
+		"37": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "ContractData.args"
+		},
+		"38": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.path"
+		},
+		"39": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.id"
+		},
+		"40": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.chain"
+		},
+		"41": {
+			"sourceFileName": "src/submission.ts",
+			"qualifiedName": "Submission.description"
+		},
+		"42": {
 			"sourceFileName": "src/quest.ts",
 			"qualifiedName": "QuestConfig"
 		},
-		"24": {
+		"43": {
 			"sourceFileName": "src/quest.ts",
 			"qualifiedName": "QuestConfig.metadata"
 		},
-		"25": {
+		"44": {
 			"sourceFileName": "src/quest.ts",
 			"qualifiedName": "QuestConfig.quests"
 		},
-		"26": {
+		"45": {
 			"sourceFileName": "src/quest.ts",
 			"qualifiedName": "QuestMetadata"
 		},
-		"27": {
+		"46": {
 			"sourceFileName": "src/quest.ts",
 			"qualifiedName": "QuestMetadata.owner"
 		},
-		"28": {
+		"47": {
 			"sourceFileName": "src/quest.ts",
 			"qualifiedName": "QuestMetadata.name"
 		},
-		"29": {
+		"48": {
 			"sourceFileName": "src/quest.ts",
 			"qualifiedName": "QuestMetadata.chain"
 		},
-		"30": {
+		"49": {
 			"sourceFileName": "src/quest.ts",
 			"qualifiedName": "QuestMetadata.title"
 		},
-		"31": {
+		"50": {
 			"sourceFileName": "src/quest.ts",
 			"qualifiedName": "QuestMetadata.description"
 		},
-		"32": {
+		"51": {
 			"sourceFileName": "src/quest.ts",
 			"qualifiedName": "QuestMetadata.image"
 		},
-		"33": {
+		"52": {
 			"sourceFileName": "src/poap.ts",
 			"qualifiedName": "POAPMetadata"
 		},
-		"34": {
+		"53": {
 			"sourceFileName": "src/poap.ts",
 			"qualifiedName": "POAPMetadata.name"
 		},
-		"35": {
+		"54": {
 			"sourceFileName": "src/poap.ts",
 			"qualifiedName": "POAPMetadata.description"
 		},
-		"36": {
+		"55": {
 			"sourceFileName": "src/poap.ts",
 			"qualifiedName": "POAPMetadata.image"
 		}

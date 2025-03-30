@@ -1,0 +1,20 @@
+{
+    "title": "Fumadocs Core",
+    "description": "The headless library",
+    "icon": "Library",
+    "root": true,
+    "pages": [
+        "---📖 Introduction---",
+        "index",
+        "...basic",
+        "---🛠️ IDE---",
+        "...ide",
+        "---🎓 Proof of Learn---",
+        "...pol",
+        "---💬 Community---",
+        "[X](https://x.com/0xProofOfLearn)",
+        "[BlueSky](https://web-cdn.bsky.app/profile/proofoflearn.bsky.social)",
+        "[GitHub](https://github.com/solide-project)",
+        "[X (Solide)](https://x.com/SolideProject)"
+    ]
+}

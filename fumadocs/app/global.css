@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+@source '../node_modules/fumadocs-ui/dist/**/*.js';
+
+@layer base {
+    :root {
+        --background-color: rgba(164, 171, 241, 0);
+        --grid-color: rgba(164, 171, 241, .05);
+
+        --color-grayscale-000: #FFFFFF;
+        --color-grayscale-025: #FAFAFA;
+        --color-grayscale-050: #F5F5F5;
+        --color-grayscale-100: #EDEDED;
+        --color-grayscale-200: #DBDDE0;
+        --color-grayscale-250: #BCC1C9;
+        --color-grayscale-300: #6A7380;
+        --color-grayscale-325: #575C66;
+        --color-grayscale-350: #313235;
+        --color-grayscale-veil: rgba(255, 255, 255, 0.8);
+    }
+
+    .dark {
+        --background-color: #010508;
+        --grid-color: rgba(164, 171, 241, .15);
+
+        --color-grayscale-000: #050505;
+        --color-grayscale-025: #131417;
+        --color-grayscale-050: #1C1E21;
+        --color-grayscale-100: #26282C;
+        --color-grayscale-200: #2D3034;
+        --color-grayscale-250: #40454D;
+        --color-grayscale-300: #848990;
+        --color-grayscale-325: #A9ADB1;
+        --color-grayscale-350: #DFE0E2;
+        --color-grayscale-veil: rgba(19, 20, 23, 0.8);
+    }
+}
+
+td {
+    background-color: var(--color-grayscale-000);
+}
+
+.bg-p {
+    background-color: var(--background-color);
+    /* var(--color-grayscale-000); */
+    background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to right, var(--grid-color) 1px, var(--background-color) 1px);
+    /* background-image: radial-gradient(circle at 50% -50%, rgba(164, 171, 241, .1) 0, rgba(164, 171, 241, 0) 50%),
+        radial-gradient(circle at 100% 0, rgba(164, 171, 241, .05) 0, rgba(164, 171, 241, 0) 50%); */
+    background-size: 20px 20px;
+    background-position: 10px 10px;
+}
+
+.bg-fd-card {
+    background-color: var(--color-grayscale-000);
+}
+
+#nd-sidebar {
+    background-color: var(--color-grayscale-000);
+}

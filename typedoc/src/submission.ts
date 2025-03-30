@@ -27,7 +27,7 @@ export interface Submission {
      * The type of submission, which can be either "deployment" or "transaction".
      * This property determines the specific details required for the submission.
      */
-    type: "deployment" | "transaction";
+    type: "deployment" | "transaction" | "value" | "data";
 
     /**
      * An optional description providing additional context about the submission.
@@ -155,4 +155,157 @@ export interface Transaction extends Submission {
      * These values will be passed to the contract function as input parameters.
      */
     args: any[];
+}
+
+/**
+ * Represents a value submission, including a sender address and a specific numerical value.
+ * 
+ * Used for quests or transactions that require sending a value from a specified address.
+ * 
+ * @category Submission
+ * @example
+ * This example represents a submission where a user sends a specific value on the Open Campus testnet.
+ * The `from` property specifies the sender's address, and the `value` represents the numerical amount.
+ * 
+ * ```json
+ * {
+ *      "path": "02_send_value/01_basic_transfer",
+ *      "type": "value",
+ *      "chain": "656476",
+ *      "from": "0xa3b2c4d5e6f7890abc123456789def01a2b3c4d5",
+ *      "value": "100",
+ *      "symbol": "gte"
+ * }
+ * ```
+ * 
+ * @example
+ * 
+ * ```json
+ * {
+ *      "path": "02_send_value/01_basic_transfer",
+ *      "description": "Transfer at least 50 tokens on Sui testnet",
+ *      "type": "value",
+ *      "chain": "1282977196",
+ *      "from": "0x89f7a45cde901b23c45678abcd900ef12a34567b",
+ *      "value": "50",
+ *      "symbol": "gte"
+ * }
+ * ```
+ */
+export interface NativeValue extends Submission {
+    /**
+     * Specifies that this submission type is a value transaction.
+     * The value is always "value" for this interface.
+     */
+    type: "value";
+
+    /**
+     * The sender's address in hexadecimal format.
+     * This address must be a valid blockchain address prefixed with "0x".
+     */
+    from: `0x${string}`;
+
+    /**
+     * The numerical value associated with the submission.
+     * This typically represents an amount of tokens or native cryptocurrency.
+     */
+    value: string; // Expected to be a numeric string
+
+    /**
+     * An optional comparison symbol used to define conditions for the value.
+     * - "eq"  → Equals
+     * - "lt"  → Less than
+     * - "gt"  → Greater than
+     * - "lte" → Less than or equal to
+     * - "gte" → Greater than or equal to
+     */
+    symbol?: "eq" | "lt" | "gt" | "lte" | "gte";
+}
+
+/**
+ * Represents retrieving a property value from a deployed smart contract.
+ * 
+ * Used for queries that fetch contract state variables based on ABI and arguments.
+ * 
+ * @category Submission
+ * @example
+ * This example retrieves a contract's `totalSupply` value on the Open Campus testnet.
+ * The `contract` property specifies the deployed contract address, `variable` defines the function or state variable being queried, 
+ * and the `abi` represents the function's ABI definition.
+ * 
+ * ```json
+ * {
+ *      "path": "03_query_contract/01_get_total_supply",
+ *      "type": "data",
+ *      "chain": "656476",
+ *      "contract": "0x1234567890abcdef1234567890abcdef12345678",
+ *      "variable": "totalSupply",
+ *      "abi": [
+ *          {
+ *              "constant": true,
+ *              "inputs": [],
+ *              "name": "totalSupply",
+ *              "outputs": [{ "name": "", "type": "uint256" }],
+ *              "stateMutability": "view",
+ *              "type": "function"
+ *          }
+ *      ]
+ * }
+ * ```
+ * 
+ * @example
+ * Fetching a user's token balance from a deployed contract on the Sui testnet.
+ * The `args` property includes the user address as an input argument.
+ * 
+ * ```json
+ * {
+ *      "path": "03_query_contract/02_get_balance",
+ *      "description": "Retrieve the token balance of a specific address",
+ *      "type": "data",
+ *      "chain": "1282977196",
+ *      "contract": "0xabcdef1234567890abcdef1234567890abcdef12",
+ *      "variable": "balanceOf",
+ *      "abi": [
+ *          {
+ *              "constant": true,
+ *              "inputs": [{ "name": "owner", "type": "address" }],
+ *              "name": "balanceOf",
+ *              "outputs": [{ "name": "balance", "type": "uint256" }],
+ *              "stateMutability": "view",
+ *              "type": "function"
+ *          }
+ *      ],
+ *      "args": ["0x89f7a45cde901b23c45678abcd900ef12a34567b"]
+ * }
+ * ```
+ */
+export interface ContractData extends Submission {
+    /**
+     * Specifies that this submission type is querying contract data.
+     * The value is always "data" for this interface.
+     */
+    type: "data";
+
+    /**
+     * The deployed contract address being queried.
+     * This should be a valid blockchain address prefixed with "0x".
+     */
+    contract?: string;
+
+    /**
+     * The name of the function or state variable being retrieved from the contract.
+     */
+    variable: string;
+
+    /**
+     * The ABI (Application Binary Interface) definition for the queried function or variable.
+     * This should match the contract's deployed ABI format.
+     */
+    abi: any[];
+
+    /**
+     * Optional arguments required for the function call.
+     * These should be passed in the same order as defined in the contract's ABI.
+     */
+    args?: any[];
 }
